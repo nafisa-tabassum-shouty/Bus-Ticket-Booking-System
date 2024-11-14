@@ -1,0 +1,109 @@
+﻿@model BUS.Models.Customer
+
+@{
+    ViewBag.Title = "Edit Customer";
+    Layout = "~/Views/Shared/Customer.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Edit Customer</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow-sm mt-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Customer Information</h4>
+            </div>
+
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.C_ID)
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.C_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.C_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.C_NAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.MOBILE_NUMBER, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.MOBILE_NUMBER, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MOBILE_NUMBER, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer text-right">
+                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.ActionLink("Cancel", "Details", new { id = Model.C_ID }, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    h2 {
+        color: #343a40;
+        margin: 20px 0;
+    }
+
+    .card {
+        margin-top: 20px;
+        border-radius: 0.5rem;
+    }
+
+    .card-header {
+        font-size: 1.25rem;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .btn-success, .btn-secondary {
+        margin-top: 10px;
+        width: 100px;
+    }
+
+    .btn-secondary {
+        margin-left: 10px;
+    }
+
+    .card-footer {
+        padding: 10px 20px;
+        background-color: #f1f1f1;
+    }
+</style>
